@@ -76,6 +76,34 @@ export const login = async(req,res)=>{
     }
 }
 
+export const showAssignments = async(req,res)=>{
+    try {
+        const userId = req.userId;
+        
+        const admin = await adminModel.findById(userId).populate("assignments");
+        
+        if (!admin) {
+            return res.status(404).json({
+                success: false,
+                message: "Admin not found"
+            });
+        }
+        
+        const tasks = admin.assignments.map(assignment => assignment.task);
+
+        res.status(200).json({
+            success : true,
+             message : "Showing all assignments",
+             assignment : tasks
+        });
+    } catch (error) {
+        res.status(400).json({
+            success : true,
+            message : error.message
+        })
+    }
+}
+
 export const assignments_accept = async(req,res)=>{
     try {
         const {id} = req.params;

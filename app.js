@@ -23,7 +23,12 @@ app.use('/user',userRouter);
 app.use('/admin',authRouter);
 
 app.listen(port , ()=>{
-    connectDb();
-    console.log(`listening at http://localhost:${port}`);
+    try {
+        connectDb();
+        console.log(`listening at http://localhost:${port}`);
+    } catch (error) {
+        console.log("listening error ",error.message);
+        
+    }
     
 })
