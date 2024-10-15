@@ -13,7 +13,7 @@ userRouter.post('/logout',userLogout);
 
 userRouter.post('/upload',isLoggedIn,userUpload);
 
-userRouter.get('/all_admins',allAdmins);
+userRouter.get('/all_admins',isLoggedIn,allAdmins);
 
 
 export default userRouter;
