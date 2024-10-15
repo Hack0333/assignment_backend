@@ -7,10 +7,10 @@ import userRouter from './route/user.route.js'
 import authRouter from './route/admit.route.js'
 
 
-const app = express();
 dotenv.config();
-app.use(cookieParser());
+const app = express();
 app.use(express.json());
+app.use(cookieParser()); 
 app.use(express.urlencoded({extended:true}));
 
 const port = process.env.PORT || 5000;
