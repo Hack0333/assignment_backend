@@ -10,7 +10,7 @@ authRouter.post("/login",login)
 authRouter.post("/assignments",(req,res)=>{
     res.send("auth register")
 })
-authRouter.post("/assignments/:id/accept",isLoggedIn,assignments_accept)
-authRouter.post("/assignments/:id/reject",isLoggedIn,assignments_reject)
+authRouter.patch("/assignments/:id/reject",isLoggedIn,assignments_reject)
+authRouter.patch("/assignments/:id/accept",isLoggedIn,assignments_accept)
 
 export default authRouter;
